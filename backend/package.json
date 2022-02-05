@@ -1,0 +1,27 @@
+{
+  "name": "proyecto-bd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon server.js --ext js,graphql --exec babel-node"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.6.2",
+    "express": "^4.17.2",
+    "graphql": "^16.3.0",
+    "mysql2": "^2.3.3",
+    "pg": "^8.7.3",
+    "sequelize": "^5.15.1",
+    "sequelize-cli": "^5.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
+}
