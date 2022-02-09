@@ -17,6 +17,12 @@ const typeDefs = gql`
       apellido: String!
       active: Boolean!
     ): Persona!
+    updatePersona(
+      id: Int!
+      nombre: String!
+      apellido: String!
+      active: Boolean!
+    ): Persona!
   }
 `;
 module.exports = typeDefs;
