@@ -6,8 +6,6 @@ class Persona extends React.Component {
     this.state = {
       nombre: this.props.nombre,
       apellido: this.props.apellido,
-      nacionalidad: this.props.nacionalidad,
-      ci: this.props.ci,
     };
   }
 
@@ -15,13 +13,9 @@ class Persona extends React.Component {
     const nombre = this.state.nombre;
     const apellido = this.state.apellido;
     const nombre_completo = nombre + " " + apellido + " ";
-    const nacionalidad = this.state.nacionalidad;
-    const ci = this.state.ci;
 
-    return <div style="border: 1px solid black">
+    return <div>
       <div>{nombre_completo}</div>
-      <div>{nacionalidad}</div>
-      <div>{ci}</div>
     </div>;
   }
 }
