@@ -26,7 +26,7 @@ class Personas extends React.Component {
         {datos.map((data) =>
           data.active ? (
             <div className="personBox">
-              <Persona nombre={data.nombre} apellido={data.apellido}></Persona>
+              <Persona nombre={data.nombre} apellido={data.apellido} nacionalidad={data.nacionalidad} ci={data.ci}></Persona>
 
               <div onClick={() => this.childToParent(data)}>
                 &nbsp; Modificar

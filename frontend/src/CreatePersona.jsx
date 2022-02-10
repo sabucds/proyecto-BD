@@ -7,14 +7,20 @@ function CreatePersona() {
   const [Persona, setPersona] = useState({
     nombre: "",
     apellido: "",
+    nacionalidad: "",
+    ci: "",
   });
 
   const AGREGAR_PERSONA = gql`
-    mutation ($nombre: String!, $apellido: String!, $active: Boolean!) {
-      createPersona(nombre: $nombre, apellido: $apellido, active: $active) {
+    mutation ($nombre: String!, $apellido: String!, 
+      $nacionalidad: String!, $ci: Int!, $active: Boolean!) {
+      createPersona(nombre: $nombre, apellido: $apellido, 
+        nacionalidad: $nacionalidad, ci: $ci, active: $active) {
         id
         nombre
         apellido
+        nacionalidad
+        ci
         active
       }
     }
@@ -35,7 +41,7 @@ function CreatePersona() {
   return (
     <div>
       <form className="col-start-2 col-end-8">
-        <a className="text-gris">Nombre:</a>
+        <a className="text-gris">Nombre:  </a>
         <input
           type="text"
           name="nombre"
@@ -43,9 +49,9 @@ function CreatePersona() {
           onChange={actualizarDatos}
           className="w-24 mb-1 mt-1 ml-2"
         ></input>
-        <div></div>
+        <br />
 
-        <a className="text-gris">Apellido:</a>
+        <a className="text-gris">Apellido:  </a>
         <input
           type="text"
           name="apellido"
@@ -53,8 +59,28 @@ function CreatePersona() {
           onChange={actualizarDatos}
           className="w-24 mb-1 mt-1 ml-2"
         ></input>
-        <div></div>
+        <br />
 
+        <a className="text-gris">Nacionalidad:  </a>
+        <input
+          type="text"
+          name="nacionalidad"
+          value={Persona.nacionalidad}
+          onChange={actualizarDatos}
+          className="w-24 mb-1 mt-1 ml-2"
+        ></input>
+        <br />
+
+        <a className="text-gris">Cédula de Identidad:  </a>
+        <input
+          type="text"
+          name="ci"
+          value={Persona.ci}
+          onChange={actualizarDatos}
+          className="w-24 mb-1 mt-1 ml-2"
+        ></input>
+        <br />
+        <br />
         <button
           className="text-gray-200 my-3 
                         rounded-lg font-normal
@@ -64,6 +90,8 @@ function CreatePersona() {
               variables: {
                 nombre: Persona.nombre,
                 apellido: Persona.apellido,
+                nacionalidad: Persona.nacionalidad,
+                ci: Persona.ci,
                 active: true,
               },
             });

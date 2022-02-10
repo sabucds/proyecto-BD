@@ -5,6 +5,8 @@ const typeDefs = gql`
     id: Int!
     nombre: String!
     apellido: String!
+    nacionalidad: String!
+    ci: Int!
     active: Boolean!
   }
   type Query {
@@ -15,12 +17,17 @@ const typeDefs = gql`
     createPersona(
       nombre: String!
       apellido: String!
+      nacionalidad: String!
+      ci: Int!
       active: Boolean!
     ): Persona!
+    
     updatePersona(
       id: Int!
       nombre: String!
       apellido: String!
+      nacionalidad: String!
+      ci: Int!
       active: Boolean!
     ): Persona!
   }

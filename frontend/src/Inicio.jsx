@@ -14,9 +14,7 @@ function Inicio(props) {
   if (loading) return <p>Cargando</p>;
   if (error) return <p>Error</p>;
   const childToParent = (childdata) => {
-    //comunicacion entre este componente y el VideoFCE.js para saber si video termino
     setPersonToModify(childdata);
-    console.log("AAA", childdata);
   };
 
   return (
@@ -25,6 +23,7 @@ function Inicio(props) {
       <div>
         <button onClick={() => setDisplayForm(!DisplayForm)}>Agregar</button>
       </div>
+      <br /><br />
       {DisplayForm ? <CreatePersona /> : <div></div>}
       <div>
         {PersonToModify ? (

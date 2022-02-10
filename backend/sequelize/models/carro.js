@@ -1,27 +1,27 @@
 const { DataTypes } = require("pg");
 
 module.exports = (sequelize, DataTypes) => {
-  const Persona = sequelize.define(
-    "Persona",
+  const Carro = sequelize.define(
+    "Carro",
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      nombre: {
+      marca: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      apellido: {
+      modelo: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      nacionalidad: {
+      color: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      ci: {
+      placa: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -29,8 +29,9 @@ module.exports = (sequelize, DataTypes) => {
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
+      }, //ME FALTA EL FOREIGN KEY DE OWNER!!! AAAAAAAAAA
     },
+    {}
   );
-  return Persona;
+  return Carro;
 };
