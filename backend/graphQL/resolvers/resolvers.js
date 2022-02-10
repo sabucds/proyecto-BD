@@ -8,12 +8,12 @@ const resolvers = {
     },
   },
   Mutation: {
-    async createPersona(root, { nombre, apellido, nacionalidad, ci, active }, { models }) {
-      return await models.persona.create({ nombre, apellido, nacionalidad, ci, active });
+    async createPersona(root, { nombre, apellido, active }, { models }) {
+      return await models.persona.create({ nombre, apellido, active });
     },
-    async updatePersona(root, { id, nombre, apellido, nacionalidad, ci, active }, { models }) {
+    async updatePersona(root, { id, nombre, apellido, active }, { models }) {
       await models.persona.update(
-        { id, nombre, apellido, nacionalidad, ci, active },
+        { id, nombre, apellido, active },
         {
           where: {
             id: id,

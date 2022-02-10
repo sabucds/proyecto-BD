@@ -10,6 +10,15 @@ const models = {
   persona: sequelize.import("./persona.js"),
   carro: sequelize.import("./carro.js"),
 };
+//Relaciones entre modelos
+models.carro.belongsTo(models.persona, {
+    name: 'owner',
+    field: 'id',
+})
+models.persona.hasMany(models.carro, {
+  name: 'cars',
+  field: 'id',
+})
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;

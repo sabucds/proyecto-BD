@@ -17,15 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      nacionalidad: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      ci: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
