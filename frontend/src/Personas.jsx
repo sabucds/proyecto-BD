@@ -8,6 +8,7 @@ class Personas extends React.Component {
       datos: props.datos,
     };
     this.childToParent = props.childToParent;
+    this.childToParentDelete = props.childToParentDelete;
     this.depuracionData = this.depuracionData.bind(this);
   }
 
@@ -27,10 +28,14 @@ class Personas extends React.Component {
           data.active ? (
             <div className="personBox">
               <Persona nombre={data.nombre} apellido={data.apellido}></Persona>
-
-              <div onClick={() => this.childToParent(data)}>
-                &nbsp; Modificar
-              </div>
+              &nbsp; &nbsp;
+              <button onClick={() => this.childToParent(data)}>
+                Modificar
+              </button>
+              &nbsp; &nbsp;
+              <button onClick={() => this.childToParentDelete(data)}>
+                Eliminar
+              </button>
             </div>
           ) : (
             <div></div>

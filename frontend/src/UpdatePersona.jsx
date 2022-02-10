@@ -75,9 +75,6 @@ function UpdatePersona(props) {
         <div></div>
 
         <button
-          className="text-gray-200 my-3 
-                        rounded-lg font-normal
-                        w-20 bg-pink-600"
           onClick={(e) => {
             upPersona({
               variables: {
@@ -93,7 +90,6 @@ function UpdatePersona(props) {
           Actualizar{" "}
         </button>
       </form>
-      )
     </div>
   );
 }
