@@ -22,7 +22,7 @@ const server = new ApolloServer({ typeDefs, resolvers, context: { models } });
 const app = express();
 server.start().then((res) => {
   server.applyMiddleware({ app });
-  app.listen({ port: 5000 }, () =>
-    console.log("Now browse to http://localhost:5000" + server.graphqlPath)
+  app.listen({ port: 4000 }, () =>
+    console.log("Now browse to http://localhost:4000" + server.graphqlPath)
   );
 });
