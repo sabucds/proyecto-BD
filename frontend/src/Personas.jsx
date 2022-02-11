@@ -36,6 +36,10 @@ class Personas extends React.Component {
               <button onClick={() => this.childToParentDelete(data)}>
                 Eliminar
               </button>
+              &nbsp; &nbsp;
+              <button onClick={() => this.childToParentDelete(data)}>
+                Registrar carro
+              </button>
             </div>
           ) : (
             <div></div>

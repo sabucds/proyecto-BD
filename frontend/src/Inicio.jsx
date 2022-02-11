@@ -8,7 +8,7 @@ import Popup from "./Popup";
 
 function Inicio(props) {
   const { loading, error, data } = useQuery(GET_PERSONAS);
-  const [PersonToModify, setPersonToModify] = useState(false);
+  const [PersonToModify, setPersonToModify] = useState(null);
   const [DisplayForm, setDisplayForm] = useState(false);
 
   const DELETE_PERSONA = gql`
@@ -40,9 +40,8 @@ function Inicio(props) {
 
     console.log("AAA", childdata);
   };
+ 
   const childToParentDelete = (childdata) => {
-    //comunicacion entre este componente y el VideoFCE.js para saber si video termino
-    console.log("AAA", childdata.id);
     delPersona({
       variables: {
         updatePersonaId: childdata.id,
@@ -54,8 +53,7 @@ function Inicio(props) {
   };
 
   const togglePopup = () => {
-    setPersonToModify(false);
-    console.log("AAAAAAA");
+    setPersonToModify(null);
   };
 
   if (loading) return <p>Cargando</p>;
@@ -64,28 +62,22 @@ function Inicio(props) {
   if (error1) return <p>Error</p>;
   return (
     <div>
+      <div>
+        <button onClick={() => setDisplayForm(!DisplayForm)}>Agregar</button>
+      </div>
+      {DisplayForm && <CreatePersona />}
       <Personas
         datos={data.getPersonas}
         childToParent={childToParent}
         childToParentDelete={childToParentDelete}
       />
       <div>
-        <button onClick={() => setDisplayForm(!DisplayForm)}>Agregar</button>
-      </div>
-      {DisplayForm ? <CreatePersona /> : <div></div>}
-      <div>
-        {PersonToModify ? (
-          <Popup
+        {PersonToModify && <Popup
             content={
-              <UpdatePersona
-                Persona={PersonToModify}
-                togglePopup={togglePopup}
-              />
+              <UpdatePersona Persona={PersonToModify}/>
             }
-          />
-        ) : (
-          <div></div>
-        )}
+            togglePopup={togglePopup}
+          />}
       </div>
     </div>
   );

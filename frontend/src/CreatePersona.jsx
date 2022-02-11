@@ -11,14 +11,14 @@ function CreatePersona() {
 
   const AGREGAR_PERSONA = gql`
     mutation ($nombre: String!, $apellido: String!, $active: Boolean!) {
-      createPersona(nombre: $nombre, apellido: $apellido, active: $active) {
-        id
-        nombre
-        apellido
-        active
-      }
+    createPersona(nombre: $nombre, apellido: $apellido, active: $active) {
+    id
+    nombre
+    apellido
+    active
     }
-  `;
+}
+`;
 
   const [crePersona, { loading, error, data }] = useMutation(AGREGAR_PERSONA);
 

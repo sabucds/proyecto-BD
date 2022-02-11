@@ -13,12 +13,10 @@ const models = {
 
 //Relaciones entre modelos
 models.carro.belongsTo(models.persona, {
-    name: 'owner',
-    field: 'id',
+    as: "dueno",
 })
 models.persona.hasMany(models.carro, {
-  name: 'cars',
-  field: 'id',
+  as: "carros",
 })
 
 models.sequelize = sequelize;
