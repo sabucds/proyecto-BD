@@ -14,7 +14,7 @@ const typeDefs = gql`
     color: String!
     placa: String!
     active: Boolean!
-    PersonaId: Int!
+    duenoId: Int!
   }
   type Query {
     getPersonas: [Persona]
@@ -32,7 +32,7 @@ const typeDefs = gql`
       color: String!
       placa: String!
       active: Boolean!
-      PersonaId: Int!
+      duenoId: Int!
     ): Carro!
     updatePersona(
       id: Int!
@@ -47,7 +47,7 @@ const typeDefs = gql`
       color: String!
       placa: String!
       active: Boolean!
-      PersonaId: Int!
+      duenoId: Int!
     ): Carro!
   }
 `;

@@ -4,25 +4,25 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 
 function CreateCarro(props) {
-    const [Carro, setPersona] = useState({
+    const [Carro, setCarro] = useState({
       marca: "",
       modelo: "",
       color: "",
       placa: "",
-      PersonaId: 0,
+      duenoId: 0,
     });
     
   
     const AGREGAR_CARRO = gql`
-      mutation ($marca: String!, $modelo: String!, $color: String!, $placa: String!, $active: Boolean!, $PersonaId: Int!) {
-      createCarro($marca: String!, $modelo: String!, $color: String!, $placa: String!, $active: Boolean!, $PersonaId: Int!) {
+      mutation ($marca: String!, $modelo: String!, $color: String!, $placa: String!, $active: Boolean!, $duenoId: Int!) {
+      createCarro(marca: $marca, modelo: $modelo, color: $color, placa: $placa, active: $active, duenoId: $duenoId) {
       id
       marca
       modelo
       color
       placa
       active
-      PersonaId
+      duenoId
       }
   }
   `;
@@ -37,8 +37,11 @@ function CreateCarro(props) {
     };
   
     if (loading) return <p>Cargando</p>;
-    if (error) return <p>Error</p>;
-    console.log(error);
+    if (error) {
+      console.log("CreateCarro error.");
+      console.log(error);
+      return <p>Error</p>
+    };
     return (
       <div>
         <form className="col-start-2 col-end-8">
@@ -91,11 +94,11 @@ function CreateCarro(props) {
               creCarro({
                 variables: {
                   marca: Carro.marca,
-                  modelo: Carro.marca,
+                  modelo: Carro.modelo,
                   color: Carro.color,
                   placa: Carro.placa,
                   active: true,
-                  PersonaId: props.id,
+                  duenoId: props.id,
                 },
               });
             }}

@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
+      }
     },
     {}
   );

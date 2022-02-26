@@ -1,4 +1,5 @@
 import React from "react";
+import CreateCarro from "./CreateCarro";
 import Persona from "./Persona";
 import "./Personas.css";
 class Personas extends React.Component {
@@ -6,6 +7,7 @@ class Personas extends React.Component {
     super(props);
     this.state = {
       datos: props.datos,
+      displayForm: false,
     };
     this.childToParent = props.childToParent;
     this.childToParentDelete = props.childToParentDelete;
@@ -25,25 +27,26 @@ class Personas extends React.Component {
     return (
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10">
         {datos.map((data) =>
-          data.active ? (
-            <div className="personBox">
-              <Persona nombre={data.nombre} apellido={data.apellido}></Persona>
-              &nbsp; &nbsp;
-              <button onClick={() => this.childToParent(data)}>
-                Modificar
-              </button>
-              &nbsp; &nbsp;
-              <button onClick={() => this.childToParentDelete(data)}>
-                Eliminar
-              </button>
-              &nbsp; &nbsp;
-              <button onClick={() => this.childToParentDelete(data)}>
-                Registrar carro
-              </button>
-            </div>
-          ) : (
-            <div></div>
-          )
+          data.active && (
+            <li key={data.nombre+data.apellido}>
+              <div className="personBox">
+                <Persona nombre={data.nombre} apellido={data.apellido}></Persona>
+                &nbsp; &nbsp;
+                <button onClick={() => this.childToParent(data)}>
+                  Modificar
+                </button>
+                &nbsp; &nbsp;
+                <button onClick={() => this.childToParentDelete(data)}>
+                  Eliminar
+                </button>
+                &nbsp; &nbsp;
+                <button onClick={() => this.setState((state) => {return {displayForm: !state.displayForm}})}>
+                  Registrar carro
+                </button>
+                {this.state.displayForm && <CreateCarro id={data.id}/>}
+              </div>
+            </li>
+          ) 
         )}
       </div>
     );

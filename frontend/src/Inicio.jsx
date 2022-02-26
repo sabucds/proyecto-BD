@@ -35,12 +35,11 @@ function Inicio(props) {
   const [delPersona, { loading1, error1, data1 }] = useMutation(DELETE_PERSONA);
 
   const childToParent = (childdata) => {
-    //comunicacion entre este componente y el VideoFCE.js para saber si video termino
     setPersonToModify(childdata);
 
     console.log("AAA", childdata);
   };
- 
+
   const childToParentDelete = (childdata) => {
     delPersona({
       variables: {
@@ -57,9 +56,15 @@ function Inicio(props) {
   };
 
   if (loading) return <p>Cargando</p>;
-  if (error) return <p>Error</p>;
+  if (error) {
+    console.log(error);
+    return <p>Error</p>
+  };
   if (loading1) return <p>Cargando</p>;
-  if (error1) return <p>Error</p>;
+  if (error1) {
+    console.log(error1); 
+    return <p>Error</p>
+  };
   return (
     <div>
       <div>

@@ -13,7 +13,7 @@ const models = {
 
 //Relaciones entre modelos
 models.carro.belongsTo(models.persona, {
-    as: "dueno",
+  as: "dueno",
 })
 models.persona.hasMany(models.carro, {
   as: "carros",
