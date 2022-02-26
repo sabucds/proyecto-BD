@@ -1,4 +1,5 @@
 import React from "react";
+import Carros from "./Carros";
 
 class Persona extends React.Component 
   {
@@ -7,7 +8,7 @@ class Persona extends React.Component
       this.state = {
         nombre: this.props.nombre,
         apellido: this.props.apellido,
-        carros: this.props.carros,
+        id: this.props.id,
       };
     }
 
@@ -16,42 +17,11 @@ class Persona extends React.Component
         const nombre = this.state.nombre;
         const apellido = this.state.apellido;
         const nombre_completo = nombre + " " + apellido + " ";
-        const cars = this.state.carros;
-
+        const duenoId = this.state.id;
         return (
           <div>
             <div>{nombre_completo}</div>
-            <div className="carros-info">
-              {
-                cars && cars.length > 0 && 
-                (cars.map
-                  ((data) => 
-                    {data.active &&
-                      <li key={data.placa}>
-                        <div className="carBox">
-                          <div className="carro">
-                            <pre>
-                              Marca: {data.marca} 
-                              Modelo: {data.modelo} 
-                              Color: {data.color} 
-                              Placa: {data.placa}
-                            </pre>
-                          </div>
-                          <br />
-                          <button onClick={() => this.modifyCar(data)}>
-                            Modificar
-                          </button>
-                          &nbsp; &nbsp;
-                          <button onClick={() => this.deleteCar(data)}>
-                            Eliminar
-                          </button>
-                        </div>
-                      </li>
-                    }
-                  )
-                )
-              }
-            </div>
+            <Carros duenoId={duenoId} />
           </div>
         )
       }

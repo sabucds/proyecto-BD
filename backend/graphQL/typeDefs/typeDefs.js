@@ -19,6 +19,7 @@ const typeDefs = gql`
   type Query {
     getPersonas: [Persona]
     getPersona(id: Int!): Persona
+    getCarros(duenoId: Int!): [Carro]
   }
   type Mutation {
     createPersona(

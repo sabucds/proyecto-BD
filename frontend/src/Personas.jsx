@@ -2,6 +2,7 @@ import React from "react";
 import CreateCarro from "./CreateCarro";
 import Persona from "./Persona";
 import "./Personas.css";
+
 class Personas extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,9 @@ class Personas extends React.Component {
     this.childToParent = props.childToParent;
     this.childToParentDelete = props.childToParentDelete;
     this.depuracionData = this.depuracionData.bind(this);
+    
   }
+
 
   componentDidMount() {}
 
@@ -28,9 +31,9 @@ class Personas extends React.Component {
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10">
         {datos.map((data) =>
           data.active && (
-            <li key={data.nombre+data.apellido}>
+            <li key={data.id}>
               <div className="personBox">
-                <Persona nombre={data.nombre} apellido={data.apellido}></Persona>
+                <Persona nombre={data.nombre} apellido={data.apellido} id={data.id}></Persona>
                 &nbsp; &nbsp;
                 <button onClick={() => this.childToParent(data)}>
                   Modificar

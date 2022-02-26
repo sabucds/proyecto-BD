@@ -1,7 +1,7 @@
 //conexion con base de datos
 import Sequelize from "sequelize";
 
-const sequelize = new Sequelize("ejercicioORM", "postgres", "a9455334z", {
+const sequelize = new Sequelize("ejercicioORM", "postgres", "AYUDA", {
   host: "localhost",
   dialect: "postgres",
 });

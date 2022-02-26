@@ -1,11 +1,18 @@
 const resolvers = {
   Query: {
     async getPersonas(root, args, { models }) {
-      return await models.persona.findAll({include: ["carros"]});
+      return await models.persona.findAll();
     },
     async getPersona(root, args, { models }) {
       return await models.persona.findByPk(args.id);
     },
+    async getCarros(root, args, { models }) {
+      return await models.carro.findAll({
+        where: {
+          duenoId: args.id,
+        }
+      })
+    }
   },
   Mutation: {
     async createPersona(root, { nombre, apellido, active }, { models }) {
